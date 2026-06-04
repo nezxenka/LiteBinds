@@ -1,0 +1,7 @@
+name: LiteBinds
+version: "2.0"
+main: org.nezxenka.litebinds.LiteBinds
+api-version: "1.16"
+authors: [nezxenka, "Dimasik201O (aka sh4dowgirl)"]
+commands:
+  binds:
