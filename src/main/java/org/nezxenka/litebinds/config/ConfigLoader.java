@@ -16,12 +16,11 @@ public class ConfigLoader {
         FileConfiguration config,
         FileConfiguration dbConfig
     ) {
-        public PluginConfig load(FileConfiguration config, FileConfiguration dbConfig) {
-            DatabaseConfig databaseConfig = loadDatabaseConfig(dbConfig);
-            GuiConfig guiConfig = loadGuiConfig(config);
-            Map<String, String> messages = loadMessages(config);
-            return new PluginConfig(databaseConfig, guiConfig, messages);
-        }
+        DatabaseConfig databaseConfig = loadDatabaseConfig(dbConfig);
+        GuiConfig guiConfig = loadGuiConfig(config);
+        Map<String, String> messages = loadMessages(config);
+        return new PluginConfig(databaseConfig, guiConfig, messages);
+    }
 
     private DatabaseConfig loadDatabaseConfig(FileConfiguration dbConfig) {
         return DatabaseConfig.builder()
@@ -138,7 +137,9 @@ public class ConfigLoader {
 
     private Map<String, String> loadMessages(FileConfiguration config) {
         Map<String, String> messages = new HashMap<>();
-        ConfigurationSection messagesSection = config.getConfigurationSection("messages");
+        ConfigurationSection messagesSection = config.getConfigurationSection(
+            "messages"
+        );
         if (messagesSection != null) {
             for (String key : messagesSection.getKeys(false)) {
                 messages.put(key, messagesSection.getString(key));
